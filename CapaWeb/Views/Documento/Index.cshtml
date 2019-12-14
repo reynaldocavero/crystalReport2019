@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table class="tab-content">
+    <tr>
+        <td>Id</td>
+        <td><input type="text" id="txtId" /></td>
+    </tr>
+    <tr>
+        <td>Nombre</td>
+        <td><input type="text" id="txtNombre" /></td>
+    </tr>
+    <tr>
+        <td>tipo Documenrto</td>
+        <td><input type="text" id="txtTipoDoc" /></td>
+    </tr>
+    <tr>
+        <td>Numero documento</td>
+        <td><input type="text" id="txtNumDoc" /></td>
+    </tr>
+    <tr>
+        <td>Mantenimiento</td>
+        <td>
+            <button id="addCliente">Agregar</button>
+            <button id="busCliente">Bucar</button>
+            <button id="EliminarCliente">Eliminar</button>
+            <button id="ActualizarCliente">Update</button>
+            <button id="reporte">Reporte</button>
+        </td>
+    </tr>
+
+</table>
+<table class="tab-content">
+    <thead>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Tipo Documento</th>
+        <th>Numero Documento</th>
+        <th>//</th>
+    </thead>
+    <tbody id="listaCliente">
+
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        EMD.Documento.init("222");
+        $("#addCliente").on('click', function () {
+
+        EMD.Documento.agregar($("#txtNombre").val(), $("#txtTipoDoc").val(), $("#txtNumDoc").val());
+        });
+
+        $("#busCliente").on('click', function () {
+            EMD.Documento.buscar($("#txtNumDoc").val());
+        });
+
+        $("#EliminarCliente").on('click', function () {
+            EMD.Documento.eliminar($("#txtNumDoc").val());
+        });
+
+        $("#ActualizarCliente").on('click', function () {
+            EMD.Documento.actualizar($("#txtNombre").val(), $("#txtTipoDoc").val(), $("#txtNumDoc").val());
+        });
+        $("#reporte").on('click', function () {
+            EMD.Documento.reporte();
+        });
+
+
+
+
+    </script>
+}
+
+
+
+
